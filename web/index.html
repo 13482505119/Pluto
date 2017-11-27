@@ -3,8 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <style>
+        body {
+            background: #2D2D2F;
+        }
+        .circleProgress_wrapper{
+            width: 212px;
+            height: 212px;
+            margin: 20px auto;
+            position: relative;
+            border:1px solid #000;
+            border-radius: 50%;
+            background: #161616;
+        }
+        .wrapper{
+            width: 106px;
+            height: 212px;
+            position: absolute;
+            top:0;
+            overflow: hidden;
+        }
+        .right{
+            right:0;
+        }
+        .left{
+            left:0;
+        }
+        .percent {
+            position: absolute;
+            left: 14px;
+            top: 14px;
+            width: 184px;
+            height: 184px;
+            text-align: center;
+            line-height: 184px;
+            color: #ffffff;
+        }
+        .circleProgress{
+            width: 184px;
+            height: 184px;
+            border: 14px solid #34343C;
+            border-radius: 50%;
+            position: absolute;
+            top:0;
+            -webkit-transform: rotate(45deg);
+        }
+        .rightcircle{
+            border-top: 14px solid #00E3FF;
+            border-right: 14px solid #00E3FF;
+            right:0;
+            /*-webkit-animation: circleProgressLoad_right 5s linear infinite;*/
+        }
+        .leftcircle{
+            border-bottom: 14px solid #00E3FF;
+            border-left: 14px solid #00E3FF;
+            left:0;
+            /*-webkit-animation: circleProgressLoad_left 5s linear infinite;*/
+        }
+        @-webkit-keyframes circleProgressLoad_right{
+            0%{
+                -webkit-transform: rotate(45deg);
+            }
+            50%,100%{
+                -webkit-transform: rotate(225deg);
+            }
+        }
+        @-webkit-keyframes circleProgressLoad_left{
+            0%,50%{
+                -webkit-transform: rotate(45deg);
+            }
+            100%{
+                -webkit-transform: rotate(225deg);
+            }
+        }
+    </style>
 </head>
 <body>
-
+<!--
+100% - 50%  right:45deg - 225deg, left:45deg
+            条件:x >= 50
+            left_deg = 45
+            right_deg = 45 + (100 - x) * 360
+50% - 0%    right:225deg, left:45deg - 225deg
+            条件:x < 50
+            left_deg = 45 + (100 - 50 - x) * 360
+            right_deg = 225
+-->
+<div class="circleProgress_wrapper">
+    <div class="wrapper right">
+        <div class="circleProgress rightcircle" style="-webkit-transform: rotate(45deg);"></div>
+    </div>
+    <div class="wrapper left">
+        <div class="circleProgress leftcircle" style="-webkit-transform: rotate(45deg);"></div>
+    </div>
+    <div class="percent">
+        100%
+    </div>
+</div>
+<div class="circleProgress_wrapper">
+    <div class="wrapper right">
+        <div class="circleProgress rightcircle" style="-webkit-transform: rotate(135deg);"></div>
+    </div>
+    <div class="wrapper left">
+        <div class="circleProgress leftcircle" style="-webkit-transform: rotate(45deg);"></div>
+    </div>
+    <div class="percent">
+        75%
+    </div>
+</div>
+<div class="circleProgress_wrapper">
+    <div class="wrapper right">
+        <div class="circleProgress rightcircle" style="-webkit-transform: rotate(225deg);"></div>
+    </div>
+    <div class="wrapper left">
+        <div class="circleProgress leftcircle" style="-webkit-transform: rotate(45deg);"></div>
+    </div>
+    <div class="percent">
+        50%
+    </div>
+</div>
+<div class="circleProgress_wrapper">
+    <div class="wrapper right">
+        <div class="circleProgress rightcircle" style="-webkit-transform: rotate(225deg);"></div>
+    </div>
+    <div class="wrapper left">
+        <div class="circleProgress leftcircle" style="-webkit-transform: rotate(135deg);"></div>
+    </div>
+    <div class="percent">
+        25%
+    </div>
+</div>
 </body>
 </html>
