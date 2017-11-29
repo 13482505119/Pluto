@@ -106,6 +106,7 @@ module.exports = function(grunt) {
             dist: {
                 files: {
                     '<%= config.dist %>/css/pluto.min.css': [
+                        '<%= config.dist %>/../node_modules/normalize.css/normalize.css',
                         '<%= config.dist %>/css/pluto.css'
                     ]
                 }
@@ -165,6 +166,7 @@ module.exports = function(grunt) {
                     middleware: function(connect){
                         return [
                             connect().use('/bower_components', serveStatic('./bower_components')),
+                            connect().use('/node_modules', serveStatic('./node_modules')),
                             function(req, res, next) {
                                 //include
                                 var filePath = req.url,
@@ -226,10 +228,13 @@ module.exports = function(grunt) {
         'sass:dist',
         //'jshint',
         'copy:dist',
+        'useminPrepare',
+        'usemin',
         'includereplace:dist',
         'autoprefixer:dist',
         'cssmin',
         'uglify'
+
     ]);
 
     // Default task(s).

@@ -1,13 +1,13 @@
 {
-  "name": "gene",
-  "description": "gene project",
-  "main": "gene.js",
+  "name": "pluto",
+  "description": "Pluto project",
+  "main": "pluto.js",
   "authors": [
     "liusong"
   ],
   "license": "ISC",
   "keywords": [
-    "gene"
+    "pluto"
   ],
   "homepage": "",
   "private": true,

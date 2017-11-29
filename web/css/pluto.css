@@ -1,1 +1,83 @@
+html {
+  line-height: 1.25;
+}
 
+body {
+  width: 10rem;
+  background: #000;
+  font-family: "SimHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #999;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0 0.07246rem;
+  margin-bottom: 0;
+  border: 0.02415rem solid #555555;
+  border-radius: 0.04831rem;
+  min-width: 0.80515rem;
+  font-size: 0.33816rem;
+  font-weight: normal;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background: none #313131;
+  color: #c7cacc;
+  font-style: normal;
+  text-decoration: none;
+}
+
+.btn-enlarged {
+  line-height: 1.35;
+}
+
+.btn-3d {
+  padding: 0.04831rem;
+  min-width: 1.27214rem;
+  font-size: 0.32206rem;
+  line-height: 1.275;
+  border: 0;
+  border-radius: 0.07246rem;
+  background: #616060;
+  background: linear-gradient(#616060, #000000);
+}
+.btn-3d > span {
+  display: inline-block;
+  min-width: 1.27214rem;
+  border-radius: 0.04831rem;
+  background: #515358;
+  background: linear-gradient(#353639, #1c1d1f);
+  color: #808082;
+}
+.btn-3d:active {
+  background: #515050;
+  background: linear-gradient(#515050, black);
+}
+.btn-3d:active > span {
+  background: #333537;
+  background: linear-gradient(#262729, #0d0e0e);
+}
+
+#container {
+  padding: 0 0.38647rem;
+}
+
+.section {
+  margin: 40px 0;
+  background: #2d2d2f;
+  border-radius: 0.08052rem;
+}
+
+.section:first-child {
+  margin-top: 20px;
+}
+
+.user {
+  display: flex;
+}

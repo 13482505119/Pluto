@@ -1,0 +1,141 @@
+// base parameters
+$fontFamily: "SimHei","Helvetica Neue",Helvetica,Arial,sans-serif;
+$baseFontSize: 124.2px;
+$baseLineHeight: 1.25;
+$backgroundBody: #000;
+$backgroundOverlay: rgba(33, 32, 32, 0.7);
+$backgroundSection: #2d2d2f;
+$colorDefault: #c7cacc;
+$colorTitle: #fff;
+$colorSubTitle: #5b5b5b;
+$colorText: #999;
+$colorName: #178cdb;
+$colorTime: $colorName;
+$colorNumber: #00e3ff;
+$colorLevel: #01fd2e;
+$colorHeading: #808082;
+$buttonColor: #808082;
+$buttonBorderFrom: #616060;
+$buttonBorderTo: #000000;
+$buttonBackgroundFrom: #353639;
+$buttonBackgroundTo: #1c1d1f;
+$buttonActive: #00e1fc;
+$buttonActiveBorderFrom: darken($buttonBorderFrom, 6.18%);
+$buttonActiveBorderTo: darken($buttonBorderTo, 6.18%);
+$buttonActiveBackgroundFrom: darken($buttonBackgroundFrom, 6.18%);
+$buttonActiveBackgroundTo: darken($buttonBackgroundTo, 6.18%);
+$divider: #5b5b5b;
+$dividerDashed: #8e8989;
+$dividerComment: #999;
+
+// pixels to rems
+@function pxToRem($px) {
+  @return $px / $baseFontSize * 1rem;
+}
+
+// mixin
+@mixin border-radius($size: 10px) {
+  -webkit-border-radius: pxToRem($size);
+  -moz-border-radius: pxToRem($size);
+  border-radius: pxToRem($size);
+}
+
+html {
+  line-height: $baseLineHeight;
+}
+body {
+  width: 10rem;
+  background: $backgroundBody;
+  font-family: $fontFamily;
+  color: $colorText;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0 pxToRem(9px);
+  margin-bottom: 0;
+  border: pxToRem(3px) solid #555555;
+  @include border-radius(6px);
+  min-width: pxToRem(100px);
+  font-size: pxToRem(42px);
+  font-weight: normal;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background: none #313131;
+  color: $colorDefault;
+  font-style: normal;
+  text-decoration: none;
+}
+.btn-enlarged {
+  line-height: 1.35;
+}
+.btn-3d {
+  padding: pxToRem(6px);
+  min-width: pxToRem(158px);
+  font-size: pxToRem(40px);
+  line-height: 1.275;
+  border: 0;
+  @include border-radius(9px);
+  background: ($buttonBorderFrom + $buttonBorderTo);
+  background: -moz-linear-gradient($buttonBorderFrom, $buttonBorderTo);
+  background: -ms-linear-gradient($buttonBorderFrom, $buttonBorderTo);
+  background: -o-linear-gradient($buttonBorderFrom, $buttonBorderTo);
+  background: -webkit-gradient(linear, 0 0, 0 100%, from($buttonBorderFrom), to($buttonBorderTo));
+  background: -webkit-linear-gradient($buttonBorderFrom, $buttonBorderTo);
+  background: linear-gradient($buttonBorderFrom, $buttonBorderTo);
+  > span {
+    display: inline-block;
+    min-width: pxToRem(158px);
+    @include border-radius(6px);
+    background: ($buttonBackgroundFrom + $buttonBackgroundTo);
+    background: -moz-linear-gradient($buttonBackgroundFrom, $buttonBackgroundTo);
+    background: -ms-linear-gradient($buttonBackgroundFrom, $buttonBackgroundTo);
+    background: -o-linear-gradient($buttonBackgroundFrom, $buttonBackgroundTo);
+    background: -webkit-gradient(linear, 0 0, 0 100%, from($buttonBackgroundFrom), to($buttonBackgroundTo));
+    background: -webkit-linear-gradient($buttonBackgroundFrom, $buttonBackgroundTo);
+    background: linear-gradient($buttonBackgroundFrom, $buttonBackgroundTo);
+    color: $buttonColor;
+  }
+  &:active {
+    background: ($buttonActiveBorderFrom + $buttonBorderTo);
+    background: -moz-linear-gradient($buttonActiveBorderFrom, $buttonActiveBorderTo);
+    background: -ms-linear-gradient($buttonActiveBorderFrom, $buttonActiveBorderTo);
+    background: -o-linear-gradient($buttonActiveBorderFrom, $buttonActiveBorderTo);
+    background: -webkit-gradient(linear, 0 0, 0 100%, from($buttonActiveBorderFrom), to($buttonActiveBorderTo));
+    background: -webkit-linear-gradient($buttonActiveBorderFrom, $buttonActiveBorderTo);
+    background: linear-gradient($buttonActiveBorderFrom, $buttonActiveBorderTo);
+    > span {
+      background: ($buttonActiveBackgroundFrom + $buttonActiveBackgroundTo);
+      background: -moz-linear-gradient($buttonActiveBackgroundFrom, $buttonActiveBackgroundTo);
+      background: -ms-linear-gradient($buttonActiveBackgroundFrom, $buttonActiveBackgroundTo);
+      background: -o-linear-gradient($buttonActiveBackgroundFrom, $buttonActiveBackgroundTo);
+      background: -webkit-gradient(linear, 0 0, 0 100%, from($buttonActiveBackgroundFrom), to($buttonActiveBackgroundTo));
+      background: -webkit-linear-gradient($buttonActiveBackgroundFrom, $buttonActiveBackgroundTo);
+      background: linear-gradient($buttonActiveBackgroundFrom, $buttonActiveBackgroundTo);
+    }
+  }
+}
+
+
+#container {
+  padding: 0 pxToRem(48px);
+}
+.section {
+  margin: 40px 0;
+  background: $backgroundSection;
+  @include border-radius;
+}
+.section:first-child {
+  margin-top: 20px;
+}
+.user {
+  display: flex;
+}
