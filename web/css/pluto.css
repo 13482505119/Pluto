@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html {
   line-height: 1.25;
 }
@@ -5,8 +6,52 @@ html {
 body {
   width: 10rem;
   background: #000;
-  font-family: "SimHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "SimHei", "黑体";
+  color: #c7cacc;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.text-nowrap {
+  white-space: nowrap;
+}
+
+.text-lowercase {
+  text-transform: lowercase;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+.text-muted {
   color: #999;
+}
+
+.text-level {
+  color: #01fd2e;
+}
+
+.text-number {
+  font-size: 110%;
 }
 
 .btn {
@@ -69,15 +114,184 @@ body {
 }
 
 .section {
-  margin: 40px 0;
+  margin: 0.32206rem 0;
   background: #2d2d2f;
   border-radius: 0.08052rem;
 }
 
 .section:first-child {
-  margin-top: 20px;
+  margin-top: 0.16103rem;
 }
 
-.user {
+.progress {
+  margin: 0 0.04831rem;
+  width: 5.63607rem;
+  height: 0.12882rem;
+  border-radius: 0.03221rem;
+  box-shadow: inset 0 0.00805rem 0.0161rem rgba(0, 0, 0, 0.1);
+  background-image: linear-gradient(120deg, rgba(255, 255, 255, 0.1) 38%, rgba(0, 0, 0, 0.9) 39%, rgba(0, 0, 0, 0.9) 61%, rgba(255, 255, 255, 0.1) 62%);
+  background-size: 0.13688rem 0.12882rem;
+}
+.progress .progress-bar {
+  height: 0.12882rem;
+  background-image: linear-gradient(120deg, rgba(31, 126, 150, 0.9) 38%, rgba(24, 103, 135, 0.8) 39%, rgba(24, 103, 135, 0.8) 61%, rgba(31, 126, 150, 0.9) 62%);
+  background-size: 0.13688rem 0.12882rem;
+}
+
+.progress-circle {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.70692rem;
+  height: 1.70692rem;
+  margin: 0.06441rem auto;
+  position: relative;
+  border: 0.00805rem solid #000;
+  border-radius: 50%;
+  background: #161616;
+}
+.progress-circle .progress-bar {
+  position: absolute;
+  top: 0;
+  width: 1.48148rem;
+  height: 1.48148rem;
+  border: 0.11272rem solid #34343C;
+  border-radius: 50%;
+  -webkit-transform: rotate(45deg);
+}
+.progress-circle-left, .progress-circle-right {
+  width: 0.85346rem;
+  height: 1.70692rem;
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+}
+.progress-circle-left {
+  left: 0;
+}
+.progress-circle-left .progress-bar {
+  border-bottom: 0.11272rem solid #00E3FF;
+  border-left: 0.11272rem solid #00E3FF;
+  left: 0;
+}
+.progress-circle-right {
+  right: 0;
+}
+.progress-circle-right .progress-bar {
+  border-top: 0.11272rem solid #00E3FF;
+  border-right: 0.11272rem solid #00E3FF;
+  right: 0;
+}
+.progress-circle .progress-text {
+  color: #01fd2e;
+  text-align: center;
+  font-size: 0.24155rem;
+}
+.progress-circle .progress-text > .text-level {
+  font-size: 0.5314rem;
+}
+
+.list-justified {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+}
+.list-justified > li {
+  flex: 1;
+}
+
+.media {
+  display: flex;
+}
+
+.media-body {
+  flex: 1;
+}
+
+.media-heading {
+  margin: 0;
+  font-size: 0.46699rem;
+  font-weight: normal;
+  line-height: 1.6;
+}
+
+.media-user {
+  padding: 0.16103rem 0 0.24155rem 0;
+  font-size: 0.24155rem;
+}
+.media-user > .media-left {
+  padding: 0 0.16103rem;
+  width: 2.23833rem;
+}
+.media-user > .media-left .list-justified {
+  line-height: 1.4;
+}
+.media-user > .media-body {
+  padding-right: 0.2818rem;
+}
+.media-user .text-level {
+  font-size: 0.41868rem;
+}
+.media-user .list-justified {
+  text-align: center;
+}
+
+.edges {
+  display: flex;
+  justify-content: space-between;
+}
+.edges-center {
+  flex: 1;
+}
+.edges-edge {
+  display: flex;
+  flex-direction: column;
+}
+.edges-edge .btn + .btn {
+  margin-top: 0.16103rem;
+}
+.edges-column {
+  flex-direction: column;
+}
+
+.level {
+  display: block;
+  width: 0.37842rem;
+  height: 0.37842rem;
+}
+.level-1 {
+  background: url("../images/level-1.png") no-repeat;
+  background-size: cover;
+}
+.level-2 {
+  background: url("../images/level-2.png") no-repeat;
+  background-size: cover;
+}
+.level-3 {
+  background: url("../images/level-3.png") no-repeat;
+  background-size: cover;
+}
+.level-grade {
+  display: inline-flex;
+  margin-top: 0.19324rem;
+}
+.level-grade > .level + .level {
+  margin-left: 0.16908rem;
+}
+
+.level-progress {
+  font-size: 0.21739rem;
+  color: #999;
+}
+.level-progress > .level-count {
+  text-align: right;
+  font-size: 110%;
+}
+.level-progress > .level-bar {
+  display: flex;
+  align-items: center;
+}
+.level-progress > .level-bar > .level-text {
+  flex: 1;
 }

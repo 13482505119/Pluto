@@ -167,6 +167,7 @@ module.exports = function(grunt) {
                         return [
                             connect().use('/bower_components', serveStatic('./bower_components')),
                             connect().use('/node_modules', serveStatic('./node_modules')),
+                            connect().use('/images', serveStatic('./web/images')),
                             function(req, res, next) {
                                 //include
                                 var filePath = req.url,
