@@ -16,7 +16,7 @@ $colorLevel: #01fd2e;
 $colorHeading: #808082;
 $buttonColor: #808082;
 $buttonBorderFrom: #616060;
-$buttonBorderTo: #000000;
+$buttonBorderTo: #000;
 $buttonBackgroundFrom: #353639;
 $buttonBackgroundTo: #1c1d1f;
 $buttonActive: #00e1fc;
@@ -27,6 +27,11 @@ $buttonActiveBackgroundTo: darken($buttonBackgroundTo, 6.18%);
 $divider: #5b5b5b;
 $dividerDashed: #8e8989;
 $dividerComment: #999;
+$navBackgroundFrom: #090909;
+$navBackgroundTo: #131313;
+$navColor: #69696b;
+$navActive: #00e1fc;
+$navDivider: #075574;
 
 // pixels to rems
 @function pxToRem($px) {
@@ -41,13 +46,18 @@ $dividerComment: #999;
 }
 
 html {
+  font-size: 10vw;
   line-height: $baseLineHeight;
 }
 body {
   width: 10rem;
   background: $backgroundBody;
+  font-size: pxToRem(36px);
   font-family: $fontFamily;
   color: $colorDefault;
+}
+p {
+  margin: pxToRem(12px) 0;
 }
 .text-left {
   text-align: left;
@@ -73,6 +83,9 @@ body {
 .text-capitalize {
   text-transform: capitalize;
 }
+.text-large {
+  font-size: 110%;
+}
 .text-muted {
   color: $colorText;
 }
@@ -80,8 +93,18 @@ body {
   color: $colorLevel;
 }
 .text-number {
-  font-size: 110%;
+  color: $colorNumber;
 }
+.space {
+  margin: pxToRem(12px);
+}
+.space-double {
+  margin: pxToRem(24px);
+}
+.space-triple {
+  margin: pxToRem(36px);
+}
+
 
 .btn {
   display: inline-block;
@@ -157,6 +180,7 @@ body {
   }
 }
 
+
 //layout
 #container {
   padding: 0 pxToRem(48px);
@@ -176,8 +200,8 @@ body {
   width: pxToRem(700px);
   height: pxToRem(16px);
   @include border-radius(4px);
-  -webkit-box-shadow: inset 0 pxToRem(1px) pxToRem(2px) rgba(0, 0, 0, .1);
-  box-shadow: inset 0 pxToRem(1px) pxToRem(2px) rgba(0, 0, 0, .1);
+  //-webkit-box-shadow: inset 0 pxToRem(1px) pxToRem(2px) rgba(0, 0, 0, .1);
+  //box-shadow: inset 0 pxToRem(1px) pxToRem(2px) rgba(0, 0, 0, .1);
   background-image: -webkit-linear-gradient(120deg, rgba(255,255,255,.1) 38%,rgba(0,0,0,.9) 39%,rgba(0,0,0,.9) 61%,rgba(255,255,255,.1) 62%);
   background-image:      -o-linear-gradient(120deg, rgba(255,255,255,.1) 38%,rgba(0,0,0,.9) 39%,rgba(0,0,0,.9) 61%,rgba(255,255,255,.1) 62%);
   background-image:         linear-gradient(120deg, rgba(255,255,255,.1) 38%,rgba(0,0,0,.9) 39%,rgba(0,0,0,.9) 61%,rgba(255,255,255,.1) 62%);
@@ -248,9 +272,13 @@ body {
 
 //list
 .list {
+  margin: 0;
+}
+.list-unstyle {
+  padding-left: 0;
+  list-style: none;
 }
 .list-justified {
-  margin: 0;
   padding-left: 0;
   list-style: none;
   display: flex;
@@ -259,41 +287,99 @@ body {
   }
 }
 
-//media
-.media {
+
+//box
+.box {
   display: flex;
+  &-sidebar {
+    font-size: pxToRem(30px);
+  }
+  &-main {
+    flex: 1;
+  }
+  &-heading {
+    margin: 0;
+    font-size: pxToRem(58px);
+    font-weight: normal;
+    line-height: 1.6;
+  }
 }
-.media-left {
+.box-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .box-heading {
+    font-size: pxToRem(42px);
+  }
 }
-.media-body {
-  flex: 1;
-}
-.media-heading {
-  margin: 0;
-  font-size: pxToRem(58px);
-  font-weight: normal;
-  line-height: 1.6;
-}
-.media-user {
+.box-user {
   padding: pxToRem(20px) 0 pxToRem(30px) 0;
-  font-size: pxToRem(30px);
-  > .media-left {
+  > .box-sidebar {
     padding: 0 pxToRem(20px);
     width: pxToRem(278px);
-    .list-justified {
+    > .list-justified {
       line-height: 1.4;
+      text-align: center;
     }
   }
-  > .media-body {
+  > .box-main {
     padding-right: pxToRem(35px);
   }
   .text-level {
     font-size: pxToRem(52px);
   }
-  .list-justified {
-    text-align: center;
+}
+.box-coins {
+  padding: pxToRem(24px) pxToRem(30px);
+  > .box-sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: pxToRem(12px) 0;
+    .text-number {
+      font-size: pxToRem(84px);
+    }
+  }
+  > .box-main {
+    margin-left: pxToRem(20px);
+    padding: 0 24px 0 30px;
+    width: pxToRem(718px);
+    background: $backgroundBody;
+    @include border-radius(8px);
+    font-size: pxToRem(42px);
+    .list-unstyle {
+      color: $colorName;
+      > li {
+        .text-date {
+          font-size: pxToRem(30px);
+        }
+      }
+      > li + li {
+        border-top: 1px dashed $dividerDashed;
+      }
+    }
+    .btn-enlarged {
+      vertical-align: bottom;
+    }
   }
 }
+.box-data {
+  justify-content: space-around;
+  padding: pxToRem(24px);
+  > .box-sidebar {
+    width: pxToRem(320px);
+    height: pxToRem(264px);
+    background: $backgroundBody;
+    @include border-radius(8px);
+    font-size: pxToRem(52px);
+    line-height: 1.15;
+  }
+  .text-number {
+    font-size: pxToRem(104px);
+  }
+}
+
 
 //edges
 .edges {
@@ -314,11 +400,12 @@ body {
   }
 }
 
+
 //level
 .level {
   display: block;
-  width: pxToRem(47px);
-  height: pxToRem(47px);
+  width: pxToRem(48px);
+  height: pxToRem(48px);
   &-1 {
     background: url("../images/level-1.png") no-repeat;
     background-size: cover;
@@ -335,7 +422,7 @@ body {
     display: inline-flex;
     margin-top: pxToRem(24px);
     > .level + .level {
-      margin-left: pxToRem(21px);
+      margin-left: pxToRem(20px);
     }
   }
 }
@@ -351,6 +438,56 @@ body {
     align-items: center;
     > .level-text {
       flex: 1;
+    }
+  }
+}
+
+
+//nav
+.nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1.35rem;
+  background: ($navBackgroundFrom + $navBackgroundTo);
+  background: -moz-linear-gradient($navBackgroundFrom, $navBackgroundTo);
+  background: -ms-linear-gradient($navBackgroundFrom, $navBackgroundTo);
+  background: -o-linear-gradient($navBackgroundFrom, $navBackgroundTo);
+  background: -webkit-gradient(linear, 0 0, 0 100%, from($navBackgroundFrom), to($navBackgroundTo));
+  background: -webkit-linear-gradient($navBackgroundFrom, $navBackgroundTo);
+  background: linear-gradient($navBackgroundFrom, $navBackgroundTo);
+  > ul {
+    display: flex;
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+    height: 1.35rem;
+    > li {
+      flex: 1;
+      position: relative;
+    }
+    > li:before {
+      content: ' ';
+      display: block;
+      position: absolute;
+      left: -1px;
+      top: 0;
+      width: 2px;
+      height: 100%;
+      background: -webkit-linear-gradient($navBackgroundFrom, $navDivider 50%, $navBackgroundTo);
+    }
+    > li:first-child:before {
+      content: normal;
+    }
+    .fa {
+      font-size: pxToRem(98px);
+    }
+    a {
+      color: $navColor;
+    }
+    a.active {
+      color: $navActive;
     }
   }
 }

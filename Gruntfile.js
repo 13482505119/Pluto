@@ -107,6 +107,7 @@ module.exports = function(grunt) {
                 files: {
                     '<%= config.dist %>/css/pluto.min.css': [
                         '<%= config.dist %>/../node_modules/normalize.css/normalize.css',
+                        '<%= config.dist %>/../bower_components/font-awesome/css/font-awesome.css',
                         '<%= config.dist %>/css/pluto.css'
                     ]
                 }
@@ -124,6 +125,13 @@ module.exports = function(grunt) {
                             '**/*.{html,js,css}',
                             '**/*.{png,jpg,gif}'
                         ]
+                    },
+                    {
+                        expand: true,
+                        dot: true,
+                        cwd: 'bower_components/font-awesome/fonts',
+                        dest: '<%= config.dist %>/fonts',
+                        src: '*'
                     }
                 ]
             }
