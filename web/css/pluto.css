@@ -16,6 +16,23 @@ p {
   margin: 0.09662rem 0;
 }
 
+#container {
+  padding: 0 0.38647rem;
+}
+#container.has-bottom {
+  padding-bottom: 1.35rem;
+}
+
+.section {
+  margin: 0.32206rem 0;
+  background: #2d2d2f;
+  border-radius: 0.08052rem;
+}
+
+.section:first-child {
+  margin-top: 0.16103rem;
+}
+
 .text-left {
   text-align: left;
 }
@@ -68,11 +85,11 @@ p {
   margin: 0.09662rem;
 }
 
-.space-double {
+.space-2 {
   margin: 0.19324rem;
 }
 
-.space-triple {
+.space-3 {
   margin: 0.28986rem;
 }
 
@@ -129,20 +146,6 @@ p {
 .btn-3d:active > span {
   background: #333537;
   background: linear-gradient(#262729, #0d0e0e);
-}
-
-#container {
-  padding: 0 0.38647rem;
-}
-
-.section {
-  margin: 0.32206rem 0;
-  background: #2d2d2f;
-  border-radius: 0.08052rem;
-}
-
-.section:first-child {
-  margin-top: 0.16103rem;
 }
 
 .progress {
@@ -384,25 +387,27 @@ p {
 
 .nav {
   position: fixed;
-  bottom: 0;
   left: 0;
   right: 0;
+}
+.nav-bottom {
+  bottom: 0;
   height: 1.35rem;
   background: #1c1c1c;
   background: linear-gradient(#090909, #131313);
 }
-.nav > ul {
+.nav-bottom > ul {
   display: flex;
   margin: 0;
   padding-left: 0;
   list-style: none;
   height: 1.35rem;
 }
-.nav > ul > li {
+.nav-bottom > ul > li {
   flex: 1;
   position: relative;
 }
-.nav > ul > li:before {
+.nav-bottom > ul > li:before {
   content: ' ';
   display: block;
   position: absolute;
@@ -412,15 +417,15 @@ p {
   height: 100%;
   background: -webkit-linear-gradient(#090909, #075574 50%, #131313);
 }
-.nav > ul > li:first-child:before {
+.nav-bottom > ul > li:first-child:before {
   content: normal;
 }
-.nav > ul .fa {
+.nav-bottom > ul .fa {
   font-size: 0.78905rem;
 }
-.nav > ul a {
+.nav-bottom > ul a {
   color: #69696b;
 }
-.nav > ul a.active {
+.nav-bottom > ul a.active {
   color: #00e1fc;
 }

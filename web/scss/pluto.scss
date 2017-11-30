@@ -59,6 +59,29 @@ body {
 p {
   margin: pxToRem(12px) 0;
 }
+
+
+//layout
+#container {
+  padding: 0 pxToRem(48px);
+  &.has-top {
+
+  }
+  &.has-bottom {
+    padding-bottom: 1.35rem;
+  }
+}
+.section {
+  margin: pxToRem(40px) 0;
+  background: $backgroundSection;
+  @include border-radius;
+}
+.section:first-child {
+  margin-top: pxToRem(20px);
+}
+
+
+//text
 .text-left {
   text-align: left;
 }
@@ -98,10 +121,10 @@ p {
 .space {
   margin: pxToRem(12px);
 }
-.space-double {
+.space-2 {
   margin: pxToRem(24px);
 }
-.space-triple {
+.space-3 {
   margin: pxToRem(36px);
 }
 
@@ -180,19 +203,6 @@ p {
   }
 }
 
-
-//layout
-#container {
-  padding: 0 pxToRem(48px);
-}
-.section {
-  margin: pxToRem(40px) 0;
-  background: $backgroundSection;
-  @include border-radius;
-}
-.section:first-child {
-  margin-top: pxToRem(20px);
-}
 
 //progress
 .progress {
@@ -446,48 +456,51 @@ p {
 //nav
 .nav {
   position: fixed;
-  bottom: 0;
   left: 0;
   right: 0;
-  height: 1.35rem;
-  background: ($navBackgroundFrom + $navBackgroundTo);
-  background: -moz-linear-gradient($navBackgroundFrom, $navBackgroundTo);
-  background: -ms-linear-gradient($navBackgroundFrom, $navBackgroundTo);
-  background: -o-linear-gradient($navBackgroundFrom, $navBackgroundTo);
-  background: -webkit-gradient(linear, 0 0, 0 100%, from($navBackgroundFrom), to($navBackgroundTo));
-  background: -webkit-linear-gradient($navBackgroundFrom, $navBackgroundTo);
-  background: linear-gradient($navBackgroundFrom, $navBackgroundTo);
-  > ul {
-    display: flex;
-    margin: 0;
-    padding-left: 0;
-    list-style: none;
+  &-bottom {
+    bottom: 0;
     height: 1.35rem;
-    > li {
-      flex: 1;
-      position: relative;
-    }
-    > li:before {
-      content: ' ';
-      display: block;
-      position: absolute;
-      left: -1px;
-      top: 0;
-      width: 2px;
-      height: 100%;
-      background: -webkit-linear-gradient($navBackgroundFrom, $navDivider 50%, $navBackgroundTo);
-    }
-    > li:first-child:before {
-      content: normal;
-    }
-    .fa {
-      font-size: pxToRem(98px);
-    }
-    a {
-      color: $navColor;
-    }
-    a.active {
-      color: $navActive;
+    background: ($navBackgroundFrom + $navBackgroundTo);
+    background: -moz-linear-gradient($navBackgroundFrom, $navBackgroundTo);
+    background: -ms-linear-gradient($navBackgroundFrom, $navBackgroundTo);
+    background: -o-linear-gradient($navBackgroundFrom, $navBackgroundTo);
+    background: -webkit-gradient(linear, 0 0, 0 100%, from($navBackgroundFrom), to($navBackgroundTo));
+    background: -webkit-linear-gradient($navBackgroundFrom, $navBackgroundTo);
+    background: linear-gradient($navBackgroundFrom, $navBackgroundTo);
+    > ul {
+      display: flex;
+      margin: 0;
+      padding-left: 0;
+      list-style: none;
+      height: 1.35rem;
+      > li {
+        flex: 1;
+        position: relative;
+      }
+      > li:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: -1px;
+        top: 0;
+        width: 2px;
+        height: 100%;
+        background: -webkit-linear-gradient($navBackgroundFrom, $navDivider 50%, $navBackgroundTo);
+      }
+      > li:first-child:before {
+        content: normal;
+      }
+      .fa {
+        font-size: pxToRem(98px);
+      }
+      a {
+        color: $navColor;
+      }
+      a.active {
+        color: $navActive;
+      }
     }
   }
+
 }
