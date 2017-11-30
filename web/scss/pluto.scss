@@ -1,3 +1,8 @@
+// pixels to rems
+@function pxToRem($px) {
+  @return $px / $baseFontSize * 1rem;
+}
+
 // base parameters
 $fontFamily: "SimHei","黑体";
 $baseFontSize: 124.2px;
@@ -9,6 +14,7 @@ $colorDefault: #c7cacc;
 $colorTitle: #fff;
 $colorSubTitle: #5b5b5b;
 $colorText: #999;
+$colorAttr: #bcbbbb;
 $colorName: #178cdb;
 $colorTime: $colorName;
 $colorNumber: #00e3ff;
@@ -17,6 +23,7 @@ $colorHeading: #808082;
 $buttonColor: #808082;
 $buttonBorderFrom: #616060;
 $buttonBorderTo: #000;
+$buttonBackground: #313131;
 $buttonBackgroundFrom: #353639;
 $buttonBackgroundTo: #1c1d1f;
 $buttonActive: #00e1fc;
@@ -32,11 +39,8 @@ $navBackgroundTo: #131313;
 $navColor: #69696b;
 $navActive: #00e1fc;
 $navDivider: #075574;
-
-// pixels to rems
-@function pxToRem($px) {
-  @return $px / $baseFontSize * 1rem;
-}
+$navTop: pxToRem(95px);
+$navBottom: pxToRem(168px);
 
 // mixin
 @mixin border-radius($size: 10px) {
@@ -44,6 +48,7 @@ $navDivider: #075574;
   -moz-border-radius: pxToRem($size);
   border-radius: pxToRem($size);
 }
+
 
 html {
   font-size: 10vw;
@@ -65,10 +70,10 @@ p {
 #container {
   padding: 0 pxToRem(48px);
   &.has-top {
-
+    padding-top: $navTop;
   }
   &.has-bottom {
-    padding-bottom: 1.35rem;
+    padding-bottom: $navBottom;
   }
 }
 .section {
@@ -78,6 +83,48 @@ p {
 }
 .section:first-child {
   margin-top: pxToRem(20px);
+}
+.section-comment {
+  margin-top: pxToRem(72px);
+  padding: pxToRem(10px);
+  > .section-body {
+    position: relative;
+    background: $backgroundBody;
+    min-height: pxToRem(306px);
+    > .section-title {
+      position: absolute;
+      left: pxToRem(66px);
+      top: pxToRem(-45px);
+      margin: 0;
+      width: pxToRem(267px);
+      height: pxToRem(84px);
+      border: pxToRem(3px) solid $divider;
+      border-radius: pxToRem(12px);
+      background: none $buttonBackground;
+      font-size: pxToRem(42px);
+      color: $colorTitle;
+      text-align: center;
+      font-weight: normal;
+      line-height: pxToRem(84px);
+    }
+    > .section-subtitle {
+      padding: 0 pxToRem(20px);
+      font-size: pxToRem(36px);
+      color: $colorHeading;
+      text-align: right;
+      line-height: 2;
+    }
+  }
+  .box-heading {
+    color: $colorHeading;
+  }
+  .list-unstyle {
+    padding: 0 pxToRem(57px) pxToRem(40px) pxToRem(48px);
+    > li {
+      padding: pxToRem(40px) 0;
+      border-bottom: 1px solid $divider;
+    }
+  }
 }
 
 
@@ -112,11 +159,26 @@ p {
 .text-muted {
   color: $colorText;
 }
+.text-attr {
+  color: $colorAttr;
+}
 .text-level {
   color: $colorLevel;
 }
 .text-number {
   color: $colorNumber;
+}
+.text-time {
+  color: $colorTime;
+}
+.text-title {
+  color: $colorTitle;
+}
+.text-subtitle {
+  color: $colorSubTitle;
+}
+.text-name {
+  color: $colorName;
 }
 .space {
   margin: pxToRem(12px);
@@ -148,7 +210,7 @@ p {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  background: none #313131;
+  background: none $buttonBackground;
   color: $colorDefault;
   font-style: normal;
   text-decoration: none;
@@ -158,7 +220,6 @@ p {
 }
 .btn-3d {
   padding: pxToRem(6px);
-  min-width: pxToRem(158px);
   font-size: pxToRem(40px);
   line-height: 1.275;
   border: 0;
@@ -202,28 +263,46 @@ p {
     }
   }
 }
+.btn-large {
+  padding: pxToRem(7px) pxToRem(8px);
+  line-height: 1.75;
+  @include border-radius(12px);
+  > span {
+    min-width: 2rem;
+    @include border-radius(9px);
+  }
+}
+.btn.active {
+  color: $buttonActive;
+  > span {
+    color: $buttonActive;
+  }
+}
+.btn-shadow {
+  text-shadow: 0 0 pxToRem(20px) rgba(81, 212, 228, .54);
+}
 
 
 //progress
 .progress {
-  margin: 0 pxToRem(6px);
-  width: pxToRem(700px);
-  height: pxToRem(16px);
-  @include border-radius(4px);
-  //-webkit-box-shadow: inset 0 pxToRem(1px) pxToRem(2px) rgba(0, 0, 0, .1);
-  //box-shadow: inset 0 pxToRem(1px) pxToRem(2px) rgba(0, 0, 0, .1);
+  width: 100%;
+  height: pxToRem(24px);
   background-image: -webkit-linear-gradient(120deg, rgba(255,255,255,.1) 38%,rgba(0,0,0,.9) 39%,rgba(0,0,0,.9) 61%,rgba(255,255,255,.1) 62%);
   background-image:      -o-linear-gradient(120deg, rgba(255,255,255,.1) 38%,rgba(0,0,0,.9) 39%,rgba(0,0,0,.9) 61%,rgba(255,255,255,.1) 62%);
   background-image:         linear-gradient(120deg, rgba(255,255,255,.1) 38%,rgba(0,0,0,.9) 39%,rgba(0,0,0,.9) 61%,rgba(255,255,255,.1) 62%);
-  -webkit-background-size: pxToRem(17px) pxToRem(16px);
-  background-size: pxToRem(17px) pxToRem(16px);
-  .progress-bar {
-    height: pxToRem(16px);
+  -webkit-background-size: pxToRem(25px) pxToRem(24px);
+  background-size: pxToRem(25px) pxToRem(24px);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
+  @include border-radius(6px);
+  > .progress-bar {
+    height: pxToRem(24px);
     background-image: -webkit-linear-gradient(120deg, rgba(31,126,150,.9) 38%,rgba(24,103,135,.8) 39%,rgba(24,103,135,.8) 61%,rgba(31,126,150,.9) 62%);
     background-image:      -o-linear-gradient(120deg, rgba(31,126,150,.9) 38%,rgba(24,103,135,.8) 39%,rgba(24,103,135,.8) 61%,rgba(31,126,150,.9) 62%);
     background-image:         linear-gradient(120deg, rgba(31,126,150,.9) 38%,rgba(24,103,135,.8) 39%,rgba(24,103,135,.8) 61%,rgba(31,126,150,.9) 62%);
-    -webkit-background-size: pxToRem(17px) pxToRem(16px);
-    background-size: pxToRem(17px) pxToRem(16px);
+    -webkit-background-size: pxToRem(25px) pxToRem(24px);
+    background-size: pxToRem(25px) pxToRem(24px);
+    @include border-radius(6px);
   }
 }
 .progress-circle {
@@ -389,7 +468,62 @@ p {
     font-size: pxToRem(104px);
   }
 }
-
+.box-comment {
+  > .box-sidebar {
+    margin-right: pxToRem(24px);
+    width: pxToRem(158px);
+    text-align: center;
+    line-height: 1.6;
+  }
+  > .box-main {
+    font-size: pxToRem(36px);
+  }
+  .box-heading {
+    font-size: pxToRem(42px);
+    color: $colorName;
+  }
+  .fa {
+    font-size: pxToRem(42px);
+    color: $divider;
+    line-height: 1.6;
+  }
+  .text-number {
+    line-height: pxToRem(36px);
+  }
+  .progress-circle {
+    margin: 0 auto;
+    width: pxToRem(132px);
+    height: pxToRem(132px);
+    .progress-bar {
+      width: pxToRem(120px);
+      height: pxToRem(120px);
+      border: pxToRem(6px) solid #34343C;
+    }
+    .progress-circle-left,
+    .progress-circle-right {
+      width: pxToRem(66px);
+      height: pxToRem(132px);
+      position: absolute;
+      top:0;
+      overflow: hidden;
+    }
+    .progress-circle-left .progress-bar {
+      border-bottom: pxToRem(6px) solid #00E3FF;
+      border-left: pxToRem(6px) solid #00E3FF;
+    }
+    .progress-circle-right .progress-bar {
+      border-top: pxToRem(6px) solid #00E3FF;
+      border-right: pxToRem(6px) solid #00E3FF;
+    }
+    img {
+      width: 132px;
+      height: 132px;
+      border-radius: 50%;
+      object-fit: cover;
+      -o-object-fit: cover;
+    }
+  }
+}
 
 //edges
 .edges {
@@ -430,10 +564,21 @@ p {
   }
   &-grade {
     display: inline-flex;
+    flex-wrap: wrap;
     margin-top: pxToRem(24px);
     > .level + .level {
       margin-left: pxToRem(20px);
     }
+  }
+}
+.level-small {
+  margin: pxToRem(12px) 0;
+  > .level {
+    width: pxToRem(30px);
+    height: pxToRem(30px);
+  }
+  > .level + .level {
+    margin-left: pxToRem(2px);
   }
 }
 .level-progress {
@@ -446,6 +591,20 @@ p {
   > .level-bar {
     display: flex;
     align-items: center;
+    > .progress {
+      margin: 0 pxToRem(6px);
+      width: pxToRem(700px);
+      height: pxToRem(16px);
+      -webkit-background-size: pxToRem(17px) pxToRem(16px);
+      background-size: pxToRem(17px) pxToRem(16px);
+      @include border-radius(4px);
+      > .progress-bar {
+        height: pxToRem(16px);
+        -webkit-background-size: pxToRem(17px) pxToRem(16px);
+        background-size: pxToRem(17px) pxToRem(16px);
+        @include border-radius(4px);
+      }
+    }
     > .level-text {
       flex: 1;
     }
@@ -458,49 +617,107 @@ p {
   position: fixed;
   left: 0;
   right: 0;
-  &-bottom {
-    bottom: 0;
-    height: 1.35rem;
-    background: ($navBackgroundFrom + $navBackgroundTo);
-    background: -moz-linear-gradient($navBackgroundFrom, $navBackgroundTo);
-    background: -ms-linear-gradient($navBackgroundFrom, $navBackgroundTo);
-    background: -o-linear-gradient($navBackgroundFrom, $navBackgroundTo);
-    background: -webkit-gradient(linear, 0 0, 0 100%, from($navBackgroundFrom), to($navBackgroundTo));
-    background: -webkit-linear-gradient($navBackgroundFrom, $navBackgroundTo);
-    background: linear-gradient($navBackgroundFrom, $navBackgroundTo);
-    > ul {
-      display: flex;
-      margin: 0;
-      padding-left: 0;
-      list-style: none;
-      height: 1.35rem;
-      > li {
-        flex: 1;
-        position: relative;
-      }
-      > li:before {
-        content: ' ';
-        display: block;
-        position: absolute;
-        left: -1px;
-        top: 0;
-        width: 2px;
-        height: 100%;
-        background: -webkit-linear-gradient($navBackgroundFrom, $navDivider 50%, $navBackgroundTo);
-      }
-      > li:first-child:before {
-        content: normal;
-      }
-      .fa {
-        font-size: pxToRem(98px);
-      }
-      a {
-        color: $navColor;
-      }
-      a.active {
-        color: $navActive;
-      }
+  > ul {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+  }
+}
+.nav-top {
+  top: 0;
+  padding: 0 pxToRem(50px);
+  > ul {
+    justify-content: space-between;
+    align-items: center;
+    height: $navTop;
+    > li {
+      min-width: pxToRem(170px);
     }
   }
+  .nav-title {
+    flex: 1;
+    color: $colorHeading;
+    font-size: pxToRem(52px);
+  }
+}
+.nav-bottom {
+  bottom: 0;
+  background: ($navBackgroundFrom + $navBackgroundTo);
+  background: -moz-linear-gradient($navBackgroundFrom, $navBackgroundTo);
+  background: -ms-linear-gradient($navBackgroundFrom, $navBackgroundTo);
+  background: -o-linear-gradient($navBackgroundFrom, $navBackgroundTo);
+  background: -webkit-gradient(linear, 0 0, 0 100%, from($navBackgroundFrom), to($navBackgroundTo));
+  background: -webkit-linear-gradient($navBackgroundFrom, $navBackgroundTo);
+  background: linear-gradient($navBackgroundFrom, $navBackgroundTo);
+  > ul {
+    height: $navBottom;
+    > li {
+      flex: 1;
+      position: relative;
+    }
+    > li:before {
+      content: ' ';
+      display: block;
+      position: absolute;
+      left: -1px;
+      top: 0;
+      width: 2px;
+      height: 100%;
+      background: -webkit-linear-gradient($navBackgroundFrom, $navDivider 50%, $navBackgroundTo);
+    }
+    > li:first-child:before {
+      content: normal;
+    }
+    .fa {
+      font-size: pxToRem(98px);
+    }
+    a {
+      color: $navColor;
+    }
+    a.active {
+      color: $navActive;
+    }
+  }
+}
 
+
+//detail
+.detail {
+  padding: 10px;
+  font-size: pxToRem(40px);
+  &-header {
+    padding: pxToRem(20px) pxToRem(48px) pxToRem(10px) pxToRem(48px);
+    border-bottom: 5px solid $divider;
+  }
+  &-body {
+    padding: pxToRem(20px) pxToRem(48px) pxToRem(30px) pxToRem(48px);
+    line-height: 1.6;
+    > .progress {
+      margin: pxToRem(12px) 0 pxToRem(24px) 0;
+    }
+  }
+  &-time {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: pxToRem(202px);
+    background-color: $backgroundSection;
+    background-image: radial-gradient(#000 30%,transparent 0), radial-gradient(#000 30%,transparent 0);
+    background-size: 16px 16px;
+    background-position: 0 0,8px 8px;
+    > .text-time {
+      font-size: pxToRem(96px);
+    }
+  }
+  .text-title {
+    margin: 0;
+    font-size: pxToRem(48px);
+    font-weight: normal;
+  }
+  .text-subtitle {
+    margin: pxToRem(5px) 0;
+    font-size: pxToRem(40px);
+    font-weight: normal;
+  }
 }
