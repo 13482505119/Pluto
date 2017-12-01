@@ -85,35 +85,36 @@ p {
   margin-top: pxToRem(20px);
 }
 .section-comment {
-  margin-top: pxToRem(72px);
+  position: relative;
+  margin-top: pxToRem(72px) !important;
   padding: pxToRem(10px);
+  > .section-title {
+    position: absolute;
+    left: pxToRem(66px);
+    top: pxToRem(-45px);
+    margin: 0;
+    width: pxToRem(267px);
+    height: pxToRem(84px);
+    border: pxToRem(3px) solid $divider;
+    border-radius: pxToRem(12px);
+    background: none $buttonBackground;
+    font-size: pxToRem(42px);
+    color: $colorTitle;
+    text-align: center;
+    font-weight: normal;
+    line-height: pxToRem(84px);
+  }
+  > .section-subtitle {
+    padding: 0 pxToRem(20px);
+    background: $backgroundBody;
+    font-size: pxToRem(36px);
+    color: $colorHeading;
+    text-align: right;
+    line-height: 2;
+  }
   > .section-body {
-    position: relative;
     background: $backgroundBody;
     min-height: pxToRem(306px);
-    > .section-title {
-      position: absolute;
-      left: pxToRem(66px);
-      top: pxToRem(-45px);
-      margin: 0;
-      width: pxToRem(267px);
-      height: pxToRem(84px);
-      border: pxToRem(3px) solid $divider;
-      border-radius: pxToRem(12px);
-      background: none $buttonBackground;
-      font-size: pxToRem(42px);
-      color: $colorTitle;
-      text-align: center;
-      font-weight: normal;
-      line-height: pxToRem(84px);
-    }
-    > .section-subtitle {
-      padding: 0 pxToRem(20px);
-      font-size: pxToRem(36px);
-      color: $colorHeading;
-      text-align: right;
-      line-height: 2;
-    }
   }
   .box-heading {
     color: $colorHeading;
@@ -123,6 +124,71 @@ p {
     > li {
       padding: pxToRem(40px) 0;
       border-bottom: 1px solid $divider;
+    }
+  }
+}
+.section-list {
+  position: relative;
+  margin-top: pxToRem(84px) !important;
+  .section-title {
+    position: absolute;
+    top: pxToRem(-51px);
+    left: 0;
+    right: 0;
+    display: flex;
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    width: pxToRem(860px);
+    > li {
+      flex: 1;
+      border-style: solid;
+      border-width: pxToRem(3px) 0 pxToRem(3px) 0;
+      border-color: $divider;
+      background: $buttonBackground;
+      text-align: center;
+      font-size: pxToRem(54px);
+      line-height: pxToRem(96px);
+      > a {
+        color: $colorTitle;
+        text-decoration: none;
+      }
+      &:first-child {
+        border-left-width: pxToRem(3px);
+        border-top-left-radius: pxToRem(12px);
+        border-bottom-left-radius: pxToRem(12px);
+      }
+      &:last-child {
+        border-right-width: pxToRem(3px);
+        border-top-right-radius: pxToRem(12px);
+        border-bottom-right-radius: pxToRem(12px);
+      }
+      &.active {
+        border-color: #35b9fc;
+        background: $colorName;
+      }
+    }
+  }
+  .section-body {
+    height: pxToRem(117px);
+    background: $backgroundBody;
+    border: pxToRem(10px) solid $backgroundSection;
+    border-top-left-radius: pxToRem(9px);
+    border-top-right-radius: pxToRem(9px);
+  }
+  .list-unstyle {
+    padding: pxToRem(10px) 0;
+    > li:before {
+      content: ' ';
+      display: block;
+      height: pxToRem(60px);
+      margin: 0 pxToRem(10px);
+      background: $backgroundBody;
+    }
+    > li:first-child:before {
+      height: pxToRem(117px);
+      border-top-left-radius: pxToRem(9px);
+      border-top-right-radius: pxToRem(9px);
     }
   }
 }
@@ -180,14 +246,29 @@ p {
 .text-name {
   color: $colorName;
 }
+.font {
+  font-size: pxToRem(36px);
+  &-small {
+    font-size: pxToRem(30px);
+  }
+  &-large {
+    font-size: pxToRem(42px);
+  }
+  &-jumbo {
+    font-size: pxToRem(48px);
+  }
+  &-giant {
+    font-size: pxToRem(66px);
+  }
+}
 .space {
-  margin: pxToRem(12px);
+  margin: pxToRem(12px) 0;
 }
 .space-2 {
-  margin: pxToRem(24px);
+  margin: pxToRem(24px) 0;
 }
 .space-3 {
-  margin: pxToRem(36px);
+  margin: pxToRem(36px) 0;
 }
 
 
@@ -473,22 +554,25 @@ p {
     margin-right: pxToRem(24px);
     width: pxToRem(158px);
     text-align: center;
-    line-height: 1.6;
+    line-height: 1.5;
+    .text-number {
+      font-size: pxToRem(36px);
+    }
   }
   > .box-main {
     font-size: pxToRem(36px);
+    .text-subtitle {
+      margin: pxToRem(12px) 0 pxToRem(18px) 0;
+    }
+    .fa {
+      font-size: pxToRem(42px);
+      color: $divider;
+      line-height: 1.6;
+    }
   }
   .box-heading {
     font-size: pxToRem(42px);
     color: $colorName;
-  }
-  .fa {
-    font-size: pxToRem(42px);
-    color: $divider;
-    line-height: 1.6;
-  }
-  .text-number {
-    line-height: pxToRem(36px);
   }
   .progress-circle {
     margin: 0 auto;
@@ -708,6 +792,19 @@ p {
     background-position: 0 0,8px 8px;
     > .text-time {
       font-size: pxToRem(96px);
+    }
+    > .text-number {
+      line-height: pxToRem(72px);
+    }
+    &-column {
+      flex-direction: column;
+      justify-content: center;
+      > .font-66 {
+        font-size: pxToRem(66px);
+      }
+      > .font-52 {
+        font-size: pxToRem(52px);
+      }
     }
   }
   .text-title {

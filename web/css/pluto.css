@@ -37,15 +37,11 @@ p {
 }
 
 .section-comment {
-  margin-top: 0.57971rem;
+  position: relative;
+  margin-top: 0.57971rem !important;
   padding: 0.08052rem;
 }
-.section-comment > .section-body {
-  position: relative;
-  background: #000;
-  min-height: 2.46377rem;
-}
-.section-comment > .section-body > .section-title {
+.section-comment > .section-title {
   position: absolute;
   left: 0.5314rem;
   top: -0.36232rem;
@@ -61,12 +57,17 @@ p {
   font-weight: normal;
   line-height: 0.67633rem;
 }
-.section-comment > .section-body > .section-subtitle {
+.section-comment > .section-subtitle {
   padding: 0 0.16103rem;
+  background: #000;
   font-size: 0.28986rem;
   color: #808082;
   text-align: right;
   line-height: 2;
+}
+.section-comment > .section-body {
+  background: #000;
+  min-height: 2.46377rem;
 }
 .section-comment .box-heading {
   color: #808082;
@@ -77,6 +78,72 @@ p {
 .section-comment .list-unstyle > li {
   padding: 0.32206rem 0;
   border-bottom: 1px solid #5b5b5b;
+}
+
+.section-list {
+  position: relative;
+  margin-top: 0.67633rem !important;
+}
+.section-list .section-title {
+  position: absolute;
+  top: -0.41063rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  width: 6.92432rem;
+}
+.section-list .section-title > li {
+  flex: 1;
+  border-style: solid;
+  border-width: 0.02415rem 0 0.02415rem 0;
+  border-color: #5b5b5b;
+  background: #313131;
+  text-align: center;
+  font-size: 0.43478rem;
+  line-height: 0.77295rem;
+}
+.section-list .section-title > li > a {
+  color: #fff;
+  text-decoration: none;
+}
+.section-list .section-title > li:first-child {
+  border-left-width: 0.02415rem;
+  border-top-left-radius: 0.09662rem;
+  border-bottom-left-radius: 0.09662rem;
+}
+.section-list .section-title > li:last-child {
+  border-right-width: 0.02415rem;
+  border-top-right-radius: 0.09662rem;
+  border-bottom-right-radius: 0.09662rem;
+}
+.section-list .section-title > li.active {
+  border-color: #35b9fc;
+  background: #178cdb;
+}
+.section-list .section-body {
+  height: 0.94203rem;
+  background: #000;
+  border: 0.08052rem solid #2d2d2f;
+  border-top-left-radius: 0.07246rem;
+  border-top-right-radius: 0.07246rem;
+}
+.section-list .list-unstyle {
+  padding: 0.08052rem 0;
+}
+.section-list .list-unstyle > li:before {
+  content: ' ';
+  display: block;
+  height: 0.48309rem;
+  margin: 0 0.08052rem;
+  background: #000;
+}
+.section-list .list-unstyle > li:first-child:before {
+  height: 0.94203rem;
+  border-top-left-radius: 0.07246rem;
+  border-top-right-radius: 0.07246rem;
 }
 
 .text-left {
@@ -147,16 +214,32 @@ p {
   color: #178cdb;
 }
 
+.font {
+  font-size: 0.28986rem;
+}
+.font-small {
+  font-size: 0.24155rem;
+}
+.font-large {
+  font-size: 0.33816rem;
+}
+.font-jumbo {
+  font-size: 0.38647rem;
+}
+.font-giant {
+  font-size: 0.5314rem;
+}
+
 .space {
-  margin: 0.09662rem;
+  margin: 0.09662rem 0;
 }
 
 .space-2 {
-  margin: 0.19324rem;
+  margin: 0.19324rem 0;
 }
 
 .space-3 {
-  margin: 0.28986rem;
+  margin: 0.28986rem 0;
 }
 
 .btn {
@@ -417,22 +500,25 @@ p {
   margin-right: 0.19324rem;
   width: 1.27214rem;
   text-align: center;
-  line-height: 1.6;
+  line-height: 1.5;
+}
+.box-comment > .box-sidebar .text-number {
+  font-size: 0.28986rem;
 }
 .box-comment > .box-main {
   font-size: 0.28986rem;
 }
-.box-comment .box-heading {
-  font-size: 0.33816rem;
-  color: #178cdb;
+.box-comment > .box-main .text-subtitle {
+  margin: 0.09662rem 0 0.14493rem 0;
 }
-.box-comment .fa {
+.box-comment > .box-main .fa {
   font-size: 0.33816rem;
   color: #5b5b5b;
   line-height: 1.6;
 }
-.box-comment .text-number {
-  line-height: 0.28986rem;
+.box-comment .box-heading {
+  font-size: 0.33816rem;
+  color: #178cdb;
 }
 .box-comment .progress-circle {
   margin: 0 auto;
@@ -643,6 +729,19 @@ p {
 }
 .detail-time > .text-time {
   font-size: 0.77295rem;
+}
+.detail-time > .text-number {
+  line-height: 0.57971rem;
+}
+.detail-time-column {
+  flex-direction: column;
+  justify-content: center;
+}
+.detail-time-column > .font-66 {
+  font-size: 0.5314rem;
+}
+.detail-time-column > .font-52 {
+  font-size: 0.41868rem;
 }
 .detail .text-title {
   margin: 0;
