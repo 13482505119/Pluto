@@ -129,7 +129,6 @@ p {
 }
 .section-list {
   position: relative;
-  margin-top: pxToRem(84px) !important;
   .section-title {
     position: absolute;
     top: pxToRem(-51px);
@@ -178,17 +177,24 @@ p {
   }
   .list-unstyle {
     padding: pxToRem(10px) 0;
-    > li:before {
+    &.has-title {
+      margin-top: pxToRem(84px);
+      &:before {
+        content: ' ';
+        display: block;
+        height: pxToRem(117px);
+        margin: 0 pxToRem(10px);
+        background: $backgroundBody;
+        border-top-left-radius: pxToRem(9px);
+        border-top-right-radius: pxToRem(9px);
+      }
+    }
+    > li:after {
       content: ' ';
       display: block;
       height: pxToRem(60px);
       margin: 0 pxToRem(10px);
       background: $backgroundBody;
-    }
-    > li:first-child:before {
-      height: pxToRem(117px);
-      border-top-left-radius: pxToRem(9px);
-      border-top-right-radius: pxToRem(9px);
     }
   }
 }
@@ -721,8 +727,10 @@ p {
   }
   .nav-title {
     flex: 1;
+    overflow: hidden;
     color: $colorHeading;
     font-size: pxToRem(52px);
+    text-align: center;
   }
 }
 .nav-bottom {

@@ -82,7 +82,6 @@ p {
 
 .section-list {
   position: relative;
-  margin-top: 0.67633rem !important;
 }
 .section-list .section-title {
   position: absolute;
@@ -133,17 +132,24 @@ p {
 .section-list .list-unstyle {
   padding: 0.08052rem 0;
 }
-.section-list .list-unstyle > li:before {
+.section-list .list-unstyle.has-title {
+  margin-top: 0.67633rem;
+}
+.section-list .list-unstyle.has-title:before {
+  content: ' ';
+  display: block;
+  height: 0.94203rem;
+  margin: 0 0.08052rem;
+  background: #000;
+  border-top-left-radius: 0.07246rem;
+  border-top-right-radius: 0.07246rem;
+}
+.section-list .list-unstyle > li:after {
   content: ' ';
   display: block;
   height: 0.48309rem;
   margin: 0 0.08052rem;
   background: #000;
-}
-.section-list .list-unstyle > li:first-child:before {
-  height: 0.94203rem;
-  border-top-left-radius: 0.07246rem;
-  border-top-right-radius: 0.07246rem;
 }
 
 .text-left {
@@ -663,8 +669,10 @@ p {
 }
 .nav-top .nav-title {
   flex: 1;
+  overflow: hidden;
   color: #808082;
   font-size: 0.41868rem;
+  text-align: center;
 }
 
 .nav-bottom {

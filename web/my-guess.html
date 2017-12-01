@@ -1,18 +1,19 @@
-@@include('header.html', {"title": "列表页"})
-<div id="container">
+@@include('header.html', {"title": "我的关注"})
+<nav class="nav nav-top">
+    <ul>
+        <li>
+            <a href="#" class="btn btn-3d" role="button"><span>返回</span></a>
+        </li>
+        <li class="nav-title">我关注的猜猜</li>
+        <li></li>
+    </ul>
+</nav>
+<div id="container" class="has-top">
     <!-- 有记录 begin -->
     <div class="section section-list">
-        <ul class="section-title">
-            <li class="active">
-                <a href="#">火热进行中</a>
-            </li>
-            <li>
-                <a href="#">已经结束的</a>
-            </li>
-        </ul>
-        <ul class="list list-unstyle has-title">
+        <ul class="list list-unstyle">
             <!-- 进行中-未竞猜 begin -->
-            <li class="">
+            <li>
                 <div class="detail">
                     <div class="detail-header">
                         <h1 class="text-title">2017年11月12日NBA比赛，勇士队VS森林狼，请您猜一猜谁会获胜？</h1>
@@ -133,5 +134,4 @@
     </div>
     <!-- 有记录 end -->
 </div>
-
 @@include('footer.html')
