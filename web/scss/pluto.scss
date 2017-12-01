@@ -20,6 +20,8 @@ $colorTime: $colorName;
 $colorNumber: #00e3ff;
 $colorLevel: #01fd2e;
 $colorHeading: #808082;
+$colorWarning: #f90000;
+$colorDanger: #f90000;
 $buttonColor: #808082;
 $buttonBorderFrom: #616060;
 $buttonBorderTo: #000;
@@ -246,6 +248,9 @@ p {
 .text-title {
   color: $colorTitle;
 }
+.text-danger {
+  color: $colorDanger;
+}
 .text-subtitle {
   color: $colorSubTitle;
 }
@@ -264,7 +269,7 @@ p {
     font-size: pxToRem(48px);
   }
   &-giant {
-    font-size: pxToRem(66px);
+    font-size: pxToRem(64px);
   }
 }
 .space {
@@ -284,7 +289,6 @@ p {
   margin-bottom: 0;
   border: pxToRem(3px) solid #555555;
   @include border-radius(6px);
-  min-width: pxToRem(100px);
   font-size: pxToRem(42px);
   font-weight: normal;
   text-align: center;
@@ -301,6 +305,11 @@ p {
   color: $colorDefault;
   font-style: normal;
   text-decoration: none;
+  outline: none;
+  &:active,
+  &:focus {
+    outline: none;
+  }
 }
 .btn-enlarged {
   line-height: 1.35;
@@ -320,7 +329,6 @@ p {
   background: linear-gradient($buttonBorderFrom, $buttonBorderTo);
   > span {
     display: inline-block;
-    min-width: pxToRem(158px);
     @include border-radius(6px);
     background: ($buttonBackgroundFrom + $buttonBackgroundTo);
     background: -moz-linear-gradient($buttonBackgroundFrom, $buttonBackgroundTo);
@@ -350,13 +358,50 @@ p {
     }
   }
 }
+.btn-2f {
+  min-width: 2.4em;
+  > span {
+    min-width: 2.4em;
+  }
+}
+.btn-4 {
+  min-width: 4em;
+  > span {
+    min-width: 4em;
+  }
+}
+.btn-square {
+  > span {
+    width: 1.25em;
+    font-size: pxToRem(48px);
+  }
+}
+.btn-circle {
+  border-radius: 50%;
+  > span {
+    width: 1.25em;
+    border-radius: 50%;
+  }
+}
 .btn-large {
   padding: pxToRem(7px) pxToRem(8px);
   line-height: 1.75;
   @include border-radius(12px);
   > span {
-    min-width: 2rem;
     @include border-radius(9px);
+  }
+}
+.btn-giant {
+  padding: pxToRem(18px);
+  font-size: pxToRem(58px);
+  line-height: pxToRem(146px);
+  > span {
+    height: pxToRem(146px);
+  }
+  &.btn-circle {
+    > span {
+      width: pxToRem(146px);
+    }
   }
 }
 .btn.active {
@@ -367,6 +412,11 @@ p {
 }
 .btn-shadow {
   text-shadow: 0 0 pxToRem(20px) rgba(81, 212, 228, .54);
+}
+.btn-group {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 
@@ -722,7 +772,7 @@ p {
     align-items: center;
     height: $navTop;
     > li {
-      min-width: pxToRem(170px);
+      min-width: pxToRem(180px);
     }
   }
   .nav-title {
@@ -814,6 +864,9 @@ p {
         font-size: pxToRem(52px);
       }
     }
+    .btn-large > span {
+      min-width: 2rem;
+    }
   }
   .text-title {
     margin: 0;
@@ -826,3 +879,68 @@ p {
     font-weight: normal;
   }
 }
+
+
+//modal
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+  background: $backgroundOverlay;
+  opacity: 0;
+  -webkit-transition: opacity .15s linear;
+  -o-transition: opacity .15s linear;
+  transition: opacity .15s linear;
+  &-dialog {
+    position: relative;
+    padding: pxToRem(10px);
+    width: pxToRem(956px);
+    background-color: $backgroundSection;
+    @include border-radius;
+  }
+  &-close {
+    position: absolute;
+    top: -0.5em;
+    right: -0.5em;
+  }
+  &-content {
+    padding: pxToRem(42px) pxToRem(50px);
+    background-color: $backgroundBody;
+  }
+  &-title {
+    margin: 0;
+    font-weight: normal;
+    font-size: pxToRem(48px);
+    color: #b3b3b3;
+  }
+  &-body {
+    margin-top: pxToRem(42px);
+    .font-giant {
+      font-size: pxToRem(62px);
+    }
+  }
+  &-footer {
+    display: flex;
+    align-items: center;
+    line-height: pxToRem(66px);
+    text-align: center;
+    .text-danger {
+      flex: 1;
+      font-size: pxToRem(32px);
+    }
+  }
+  &.in {
+    display: flex;
+    opacity: 1;
+  }
+}
+
