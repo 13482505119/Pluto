@@ -57,7 +57,6 @@ html {
   line-height: $baseLineHeight;
 }
 body {
-  width: 10rem;
   background: $backgroundBody;
   font-size: pxToRem(36px);
   font-family: $fontFamily;
@@ -70,6 +69,8 @@ p {
 
 //layout
 #container {
+  width: pxToRem($baseFontSize * 10 - 48px * 2);
+  margin: 0 auto;
   padding: 0 pxToRem(48px);
   &.has-top {
     padding-top: $navTop;
@@ -757,6 +758,8 @@ p {
   position: fixed;
   left: 0;
   right: 0;
+  width: 10rem;
+  margin: 0 auto;
   > ul {
     margin: 0;
     padding-left: 0;

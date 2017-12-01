@@ -5,7 +5,6 @@ html {
 }
 
 body {
-  width: 10rem;
   background: #000;
   font-size: 0.28986rem;
   font-family: "SimHei", "黑体";
@@ -17,6 +16,8 @@ p {
 }
 
 #container {
+  width: 9.22705rem;
+  margin: 0 auto;
   padding: 0 0.38647rem;
 }
 #container.has-top {
@@ -697,6 +698,8 @@ p {
   position: fixed;
   left: 0;
   right: 0;
+  width: 10rem;
+  margin: 0 auto;
 }
 .nav > ul {
   margin: 0;
