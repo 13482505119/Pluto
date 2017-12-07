@@ -56,18 +56,24 @@ $(document).ready(function() {
             //pullDownLock: true,
             pullDownAction: function () {
                 data.page = 1;
-                $.post(url, data, function (html) {
+                $.get(url, data, function (html) {
                     $list.html(html);
 
+                    myIScroll.refresh();
+                }).error(function () {
+                    //todo alert
                     myIScroll.refresh();
                 });
 
             },
             pullUpAction: function () {
                 data.page++;
-                $.post(url, data, function (html) {
+                $.get(url, data, function (html) {
                     $list.append(html);
 
+                    myIScroll.refresh();
+                }).error(function () {
+                    //todo alert
                     myIScroll.refresh();
                 });
             }
