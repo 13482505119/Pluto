@@ -65,6 +65,8 @@ module.exports = function(grunt) {
                     {
                         '<%= config.dist %>/js/pluto.min.js': [
                             '<%= config.dist %>/../node_modules/jquery/dist/jquery.min.js',
+                            '<%= config.dist %>/js/iscroll-probe.js',
+                            '<%= config.dist %>/js/pullLoad.js',
                             '<%= config.dist %>/js/pluto.js'
                         ]
                     }

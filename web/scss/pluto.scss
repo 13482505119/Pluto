@@ -69,16 +69,86 @@ p {
 
 //layout
 #container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   width: pxToRem($baseFontSize * 10 - 48px * 2);
   margin: 0 auto;
-  padding: 0 pxToRem(48px);
+  overflow-x: hidden;
+  overflow-y: scroll;
   &.has-top {
-    padding-top: $navTop;
+    top: $navTop;
   }
   &.has-bottom {
-    padding-bottom: $navBottom;
+    bottom: $navBottom;
   }
 }
+.nav-tabs {
+  position: absolute;
+  top: pxToRem(43px);
+  left: 0;
+  right: 0;
+  display: flex;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  width: pxToRem(860px);
+  > li {
+    flex: 1;
+    border-style: solid;
+    border-width: pxToRem(3px) 0 pxToRem(3px) 0;
+    border-color: $divider;
+    background: $buttonBackground;
+    text-align: center;
+    font-size: pxToRem(54px);
+    line-height: pxToRem(96px);
+    > a {
+      color: $colorTitle;
+      text-decoration: none;
+    }
+    &:first-child {
+      border-left-width: pxToRem(3px);
+      border-top-left-radius: pxToRem(12px);
+      border-bottom-left-radius: pxToRem(12px);
+    }
+    &:last-child {
+      border-right-width: pxToRem(3px);
+      border-top-right-radius: pxToRem(12px);
+      border-bottom-right-radius: pxToRem(12px);
+    }
+    &.active {
+      border-color: #35b9fc;
+      background: $colorName;
+    }
+  }
+}
+.tab-content {
+  margin-top: pxToRem(84px);
+  background: $backgroundSection;
+  &:before {
+    content: ' ';
+    display: block;
+    height: pxToRem(117px);
+    border: pxToRem(10px) solid $backgroundSection;
+    background: $backgroundBody;
+    border-top-left-radius: pxToRem(9px);
+    border-top-right-radius: pxToRem(9px);
+  }
+  .pull-wrapper {
+    top: pxToRem(221px);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}
+.tab-pane {
+  display: none;
+  &.active {
+    display: block;
+  }
+}
+
 .section {
   margin: pxToRem(40px) 0;
   background: $backgroundSection;
@@ -127,77 +197,6 @@ p {
     > li {
       padding: pxToRem(40px) 0;
       border-bottom: 1px solid $divider;
-    }
-  }
-}
-.section-list {
-  position: relative;
-  .section-title {
-    position: absolute;
-    top: pxToRem(-51px);
-    left: 0;
-    right: 0;
-    display: flex;
-    list-style: none;
-    margin: 0 auto;
-    padding: 0;
-    width: pxToRem(860px);
-    > li {
-      flex: 1;
-      border-style: solid;
-      border-width: pxToRem(3px) 0 pxToRem(3px) 0;
-      border-color: $divider;
-      background: $buttonBackground;
-      text-align: center;
-      font-size: pxToRem(54px);
-      line-height: pxToRem(96px);
-      > a {
-        color: $colorTitle;
-        text-decoration: none;
-      }
-      &:first-child {
-        border-left-width: pxToRem(3px);
-        border-top-left-radius: pxToRem(12px);
-        border-bottom-left-radius: pxToRem(12px);
-      }
-      &:last-child {
-        border-right-width: pxToRem(3px);
-        border-top-right-radius: pxToRem(12px);
-        border-bottom-right-radius: pxToRem(12px);
-      }
-      &.active {
-        border-color: #35b9fc;
-        background: $colorName;
-      }
-    }
-  }
-  .section-body {
-    height: pxToRem(117px);
-    background: $backgroundBody;
-    border: pxToRem(10px) solid $backgroundSection;
-    border-top-left-radius: pxToRem(9px);
-    border-top-right-radius: pxToRem(9px);
-  }
-  .list-unstyle {
-    padding: pxToRem(10px) 0;
-    &.has-title {
-      margin-top: pxToRem(84px);
-      &:before {
-        content: ' ';
-        display: block;
-        height: pxToRem(117px);
-        margin: 0 pxToRem(10px);
-        background: $backgroundBody;
-        border-top-left-radius: pxToRem(9px);
-        border-top-right-radius: pxToRem(9px);
-      }
-    }
-    > li:after {
-      content: ' ';
-      display: block;
-      height: pxToRem(60px);
-      margin: 0 pxToRem(10px);
-      background: $backgroundBody;
     }
   }
 }
@@ -511,6 +510,19 @@ p {
   display: flex;
   > li {
     flex: 1;
+  }
+}
+.list-guess {
+  list-style: none;
+  padding: pxToRem(10px) 0;
+  border-bottom-left-radius: pxToRem(9px);
+  border-bottom-right-radius: pxToRem(9px);
+  > li:after {
+    content: ' ';
+    display: block;
+    height: pxToRem(60px);
+    margin: 0 pxToRem(10px);
+    background: $backgroundBody;
   }
 }
 
@@ -947,3 +959,100 @@ p {
   }
 }
 
+//iScroll pull load
+.pull-wrapper {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  background: $backgroundSection;
+  border-radius: pxToRem(9px);
+}
+.pull-scroller {
+  position: absolute;
+  z-index: 1;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  width: 100%;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  -o-text-size-adjust: none;
+  text-size-adjust: none;
+}
+.pull-body {
+}
+.pull-down,
+.pull-up {
+  padding: pxToRem(24px) 0;
+  font-weight: bold;
+  font-size: pxToRem(36px);
+  line-height: pxToRem(36px * 1.5);
+  color: $colorDefault;
+  text-align: center;
+}
+.pull-up {
+  border-top: 5px solid $divider;
+}
+.pull-down {
+  border-bottom: 5px solid $divider;
+}
+.pull-label {
+  margin-left: 1em;
+  vertical-align: middle;
+}
+.pull-icon {
+  display: inline-block;
+  font: normal normal normal 1.5em/1 FontAwesome;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  vertical-align: middle;
+}
+.pull-down .pull-icon:before {
+  content: "\f063";
+}
+.pull-up .pull-icon:before {
+  content: "\f062";
+}
+.pull-flip .pull-icon {
+  -webkit-transform: rotate(-180deg) translateZ(0);
+}
+.pull-loading .pull-icon:before {
+  content: "\f021";
+}
+.pull-loading .pull-icon {
+  -webkit-animation: loading 2s infinite linear;
+  animation: loading 2s infinite linear;
+}
+@-webkit-keyframes loading {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@keyframes loading {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
