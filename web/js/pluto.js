@@ -1,15 +1,29 @@
 $(document).ready(function() {
+    //modal
+    $.fn.modal = function (option) {
+        var index = $.inArray(option, ['show', 'hide', 'toggle']);
+        var modalMethods = ['addClass', 'removeClass', 'toggleClass'];
+        index = index == -1 ? 0 : index;
 
-    var $modal = $('.modal');
-
-    $('.section-list').on('click', '.btn-large', function() {
-        $modal.addClass('in');
+        return this[modalMethods[index]]('in');
+    };
+    $('.modal').on('click', '.modal-close', function() {
+        $(this).closest('.modal').removeClass('in');
     });
 
-    $modal.on('click', '.modal-close', function() {
-        $modal.removeClass('in');
+    var $container = $('#container'),
+        $modalGuess = $('#modalGuess'),
+        $modalComment = $('#modalComment');
+    $container.on('click', '.btn-large', function() {
+        //title, max, min
+        $modalGuess.modal();
+    });
+    $container.on('click', '.fa-commenting', function () {
+        $modalComment.modal();
+        return false;
     });
 
+    //tabs
     $('.nav-tabs a').on('click', function() {
         var $this = $(this),
             id = $this.attr('href'),
@@ -64,7 +78,6 @@ $(document).ready(function() {
                     //todo alert
                     myIScroll.refresh();
                 });
-
             },
             pullUpAction: function () {
                 data.page++;
