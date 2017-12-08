@@ -685,8 +685,9 @@ h1, h2, h3, h4, h5, h6 {
       border-right: pxToRem(6px) solid #00E3FF;
     }
     img {
-      width: 132px;
-      height: 132px;
+      width: pxToRem(126px);
+      height: pxToRem(126px);
+      border: 0;
       border-radius: 50%;
       object-fit: cover;
       -o-object-fit: cover;

@@ -636,8 +636,9 @@ h1, h2, h3, h4, h5, h6 {
   border-right: 0.04831rem solid #00E3FF;
 }
 .box-comment .progress-circle img {
-  width: 132px;
-  height: 132px;
+  width: 1.01449rem;
+  height: 1.01449rem;
+  border: 0;
   border-radius: 50%;
   object-fit: cover;
   -o-object-fit: cover;
