@@ -1,4 +1,16 @@
 $(document).ready(function() {
+    //tips
+    var $tips = $('<div class="tips"></div>');
+    $('body').append($tips);
+    $.tips = function (text, time) {
+        time = time || 2000;
+        var $tip = $('<div class="tips-tip"></div>').html(text);
+        $tips.append($tip);
+        setTimeout(function () {
+            $tip.remove();
+        }, time);
+    };
+
     //modal
     $.fn.modal = function (option) {
         var index = $.inArray(option, ['show', 'hide', 'toggle']);
@@ -74,8 +86,8 @@ $(document).ready(function() {
                     $list.html(html);
 
                     myIScroll.refresh();
-                }).error(function () {
-                    //todo alert
+                }).fail(function () {
+                    $.tips('服务器错误');
                     myIScroll.refresh();
                 });
             },
@@ -85,8 +97,8 @@ $(document).ready(function() {
                     $list.append(html);
 
                     myIScroll.refresh();
-                }).error(function () {
-                    //todo alert
+                }).fail(function () {
+                    $.tips('服务器错误');
                     myIScroll.refresh();
                 });
             }

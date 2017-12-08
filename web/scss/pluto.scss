@@ -23,6 +23,7 @@ $colorHeading: #808082;
 $colorWarning: #f90000;
 $colorDanger: #f90000;
 $buttonColor: #808082;
+$buttonBorder: #555555;
 $buttonBorderFrom: #616060;
 $buttonBorderTo: #000;
 $buttonBackground: #313131;
@@ -56,7 +57,7 @@ html {
   font-size: 10vw;
   line-height: $baseLineHeight;
 }
-body {
+body, button, input, select, textarea {
   background: $backgroundBody;
   font-size: pxToRem(36px);
   font-family: $fontFamily;
@@ -287,7 +288,7 @@ p {
   display: inline-block;
   padding: 0 pxToRem(9px);
   margin-bottom: 0;
-  border: pxToRem(3px) solid #555555;
+  border: pxToRem(3px) solid $buttonBorder;
   @include border-radius(6px);
   font-size: pxToRem(42px);
   font-weight: normal;
@@ -382,6 +383,12 @@ p {
     width: 1.25em;
     border-radius: 50%;
   }
+}
+.btn-small {
+  padding: 0 pxToRem(27px);
+  border: pxToRem(2px) solid $buttonBorder;
+  font-size: pxToRem(28px);
+  line-height: 1.75;
 }
 .btn-large {
   padding: pxToRem(7px) pxToRem(8px);
@@ -781,8 +788,8 @@ p {
 }
 .nav-top {
   top: 0;
-  padding: 0 pxToRem(50px);
   > ul {
+    padding: 0 pxToRem(48px);
     justify-content: space-between;
     align-items: center;
     height: $navTop;
@@ -932,13 +939,12 @@ p {
     background-color: $backgroundBody;
   }
   &-title {
-    margin: 0;
+    margin: 0 0 pxToRem(42px) 0;
     font-weight: normal;
     font-size: pxToRem(48px);
     color: #b3b3b3;
   }
   &-body {
-    margin-top: pxToRem(42px);
     .font-giant {
       font-size: pxToRem(62px);
     }
@@ -958,6 +964,27 @@ p {
     opacity: 1;
   }
 }
+
+
+//tips
+.tips {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 20%;
+  z-index: 2000;
+  margin: 0 auto;
+  width: 8rem;
+  &-tip {
+    margin: pxToRem(24px) 0;
+    padding: pxToRem(36px) pxToRem(48px);
+    background: rgba(88, 88, 88, 0.95);
+    border-radius: pxToRem(12px);
+    font-size: pxToRem(36px);
+    color: #ffffff;
+  }
+}
+
 
 //iScroll pull load
 .pull-wrapper {
@@ -1056,3 +1083,36 @@ p {
     transform: rotate(359deg);
   }
 }
+
+form {
+  color: #636262;
+}
+.form-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  & + .form-group {
+    margin-top: pxToRem(20px);
+  }
+  > .form-input {
+    flex: 1;
+    padding: 0 pxToRem(30px);
+  }
+}
+.form-textarea {
+  padding: pxToRem(10px);
+  background: $backgroundSection;
+  @include border-radius();
+  > textarea {
+    display: block;
+    width: 100%;
+    background: $backgroundBody;
+    border: 0;
+    resize: none;
+    outline: none;
+  }
+}
+.form-control {
+  display: block;
+}
+

@@ -4,7 +4,7 @@ html {
   line-height: 1.25;
 }
 
-body {
+body, button, input, select, textarea {
   background: #000;
   font-size: 0.28986rem;
   font-family: "SimHei", "黑体";
@@ -334,6 +334,13 @@ p {
 .btn-circle > span {
   width: 1.25em;
   border-radius: 50%;
+}
+
+.btn-small {
+  padding: 0 0.21739rem;
+  border: 0.0161rem solid #555555;
+  font-size: 0.22544rem;
+  line-height: 1.75;
 }
 
 .btn-large {
@@ -724,9 +731,9 @@ p {
 
 .nav-top {
   top: 0;
-  padding: 0 0.40258rem;
 }
 .nav-top > ul {
+  padding: 0 0.38647rem;
   justify-content: space-between;
   align-items: center;
   height: 0.7649rem;
@@ -866,13 +873,10 @@ p {
   background-color: #000;
 }
 .modal-title {
-  margin: 0;
+  margin: 0 0 0.33816rem 0;
   font-weight: normal;
   font-size: 0.38647rem;
   color: #b3b3b3;
-}
-.modal-body {
-  margin-top: 0.33816rem;
 }
 .modal-body .font-giant {
   font-size: 0.49919rem;
@@ -890,6 +894,24 @@ p {
 .modal.in {
   display: flex;
   opacity: 1;
+}
+
+.tips {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 20%;
+  z-index: 2000;
+  margin: 0 auto;
+  width: 8rem;
+}
+.tips-tip {
+  margin: 0.19324rem 0;
+  padding: 0.28986rem 0.38647rem;
+  background: rgba(88, 88, 88, 0.95);
+  border-radius: 0.09662rem;
+  font-size: 0.28986rem;
+  color: #ffffff;
 }
 
 .pull-wrapper {
@@ -978,4 +1000,38 @@ p {
   100% {
     transform: rotate(359deg);
   }
+}
+form {
+  color: #636262;
+}
+
+.form-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.form-group + .form-group {
+  margin-top: 0.16103rem;
+}
+.form-group > .form-input {
+  flex: 1;
+  padding: 0 0.24155rem;
+}
+
+.form-textarea {
+  padding: 0.08052rem;
+  background: #2d2d2f;
+  border-radius: 0.08052rem;
+}
+.form-textarea > textarea {
+  display: block;
+  width: 100%;
+  background: #000;
+  border: 0;
+  resize: none;
+  outline: none;
+}
+
+.form-control {
+  display: block;
 }

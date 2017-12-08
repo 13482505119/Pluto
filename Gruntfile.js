@@ -174,7 +174,7 @@ module.exports = function(grunt) {
             livereload: {
                 options: {
                     base: '<%= config.web %>',
-                    middleware: function(connect){
+                    middleware: function (connect) {
                         return [
                             connect().use('/bower_components', serveStatic('./bower_components')),
                             connect().use('/node_modules', serveStatic('./node_modules')),
@@ -182,12 +182,16 @@ module.exports = function(grunt) {
                             function(req, res, next) {
                                 //include
                                 var filePath = req.url,
+                                    fileSearch = filePath.indexOf('?'),
                                     fileDir = path.dirname(filePath),
                                     body;
 
                                 if (-1 == filePath.indexOf('.html')) {
                                     body = grunt.file.read(config.web + filePath);
                                 } else {
+                                    if (fileSearch != -1) {
+                                        filePath = filePath.substr(0, fileSearch);
+                                    }
                                     console.log('request - %s', config.web + filePath);
                                     body = grunt.file.read(config.web + filePath);
                                     var matches = includeRegExp.exec(body);
