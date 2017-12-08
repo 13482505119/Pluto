@@ -66,7 +66,16 @@ body, button, input, select, textarea {
 p {
   margin: pxToRem(12px) 0;
 }
-
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  border: none;
+  outline: 0;
+  font-size: 100%;
+  font-weight: normal;
+  -webkit-margin-start: 0;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+}
 
 //layout
 #container {
@@ -964,15 +973,13 @@ p {
     opacity: 1;
   }
 }
-
-
 //tips
 .tips {
   position: fixed;
   left: 0;
   right: 0;
-  bottom: 20%;
-  z-index: 2000;
+  bottom: 15%;
+  z-index: 5000;
   margin: 0 auto;
   width: 8rem;
   &-tip {
@@ -982,6 +989,48 @@ p {
     border-radius: pxToRem(12px);
     font-size: pxToRem(36px);
     color: #ffffff;
+  }
+}
+//alert
+.alert {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2050;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+  background: $backgroundOverlay;
+  &-content {
+    padding: pxToRem(10px);
+    width: pxToRem(956px);
+    background-color: $backgroundSection;
+    @include border-radius;
+  }
+  &-body {
+    padding: pxToRem(24px) pxToRem(48px);
+    background: $backgroundBody;
+    > h3 {
+      margin: pxToRem(20px) 0;
+      font-weight: normal;
+      font-size: pxToRem(42px);
+      color: #b3b3b3;
+    }
+  }
+  &-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: pxToRem(20px) pxToRem(48px) pxToRem(24px);
+    background: $backgroundSection;
+    > .btn {
+      margin-left: pxToRem(48px);
+    }
   }
 }
 
