@@ -66,10 +66,10 @@ $(document).ready(function() {
         $(this).closest('.modal').removeClass('in');
     });
 
-    var $container = $('#container'),
-        $modalGuess = $('#modalGuess'),
-        $modalComment = $('#modalComment');
-    var guessDefault = {
+    //modal (guess & comment)
+    var $container = $('#container');
+    var $modalGuess = $('#modalGuess'),
+        guessDefault = {
             title: '',
             balance: 0,
             min: 1,
@@ -80,6 +80,14 @@ $(document).ready(function() {
             b: ''
         },
         guess = {};
+    var $modalComment = $('#modalComment'),
+        $word = $modalComment.find('textarea'),
+        $floor = $modalComment.find('#floor'),
+        $wordCount = $('#wordCount'),
+        commentData = {},
+        wordMaxLength = 140,
+        wordLength = 0,
+        commentInterval;
     $container.on('click', '.btn-large', function() {
         guess = $.extend(guessDefault, $(this).data("data"));
 
@@ -96,7 +104,9 @@ $(document).ready(function() {
             $.tips(message.fail);
         });
     }).on('click', '.fa-commenting', function() {
+        commentData = $.extend({word: ''}, $(this).parent().data());
         $modalComment.modal();
+        $word.text(commentData.word).focus();
         return false;
     });
     $modalGuess.on('click', '.btn-square:has(.fa-plus)', function() {
@@ -132,6 +142,28 @@ $(document).ready(function() {
             }, function() {});
         }
     });
+    $word.bind('focus', function() {
+        commentInterval = setInterval(function() {
+            commentData.word = $word.val();
+            wordLength = commentData.word.length;
+            if (wordLength > wordMaxLength) {
+                wordLength = wordMaxLength;
+                commentData.word = commentData.word.substr(0, wordMaxLength);
+                $word.val(commentData.word);
+            }
+            $wordCount.text(wordLength);
+        }, 100);
+    }).bind('blur', function() {
+        clearInterval(commentInterval);
+    });
+    $modalComment.find('.form-group .btn').click(function() {
+        if ($.trim(commentData.word).length < 4) {
+            $.tips('评论内容至少4个字！');
+        } else {
+            //todo submit
+            $modalComment.modal('hide');
+        }
+    });
 
     //tabs
     $('.nav-tabs a').on('click', function() {
@@ -148,8 +180,8 @@ $(document).ready(function() {
         return false;
     }).eq(0).click();
 
+    //iScroll
     initPullLoad('#myguess-scroll');
-
     function initPullLoad(selector) {
         var $e = $(selector);
 
@@ -202,4 +234,5 @@ $(document).ready(function() {
             }
         });
     }
+
 });
